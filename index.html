@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SOMA SmartCalc – gyors, érthető lakástakarék-kalkuláció, személyes szakértői segítséggel a szerződéskötésig." />
+  <title>SOMA SmartCalc | Számolj. Hasonlíts össze. Dönts magabiztosabban.</title>
+  <style>
+    :root{
+      --bg:#090a0d;
+      --bg2:#111318;
+      --card:#15181f;
+      --line:rgba(255,255,255,.09);
+      --text:#f6f3eb;
+      --muted:#b9b5ab;
+      --gold:#d6b45b;
+      --gold2:#f2d98c;
+      --ok:#9fd3ad;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 80% 0%,rgba(214,180,91,.12),transparent 27rem),
+        radial-gradient(circle at 0% 35%,rgba(214,180,91,.07),transparent 30rem),
+        var(--bg);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:18px;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 36px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      background:rgba(9,10,13,.78);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.08em}
+    .brand-mark{
+      width:42px;height:42px;border-radius:50%;
+      display:grid;place-items:center;
+      border:1px solid rgba(214,180,91,.55);
+      background:linear-gradient(145deg,rgba(214,180,91,.2),rgba(214,180,91,.03));
+      color:var(--gold2);font-size:19px;
+    }
+    .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.15em;font-weight:700}
+    .nav-cta,.btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:54px;padding:14px 22px;border-radius:14px;
+      font-weight:850;letter-spacing:.01em;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#17130a;border:0;
+      box-shadow:0 10px 30px rgba(214,180,91,.19);
+      transition:.2s ease;
+    }
+    .nav-cta:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .hero{padding:92px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.13fr .87fr;gap:54px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      color:var(--gold2);font-size:14px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .eyebrow:before{content:"";width:38px;height:1px;background:var(--gold)}
+    h1{font-size:clamp(42px,6vw,76px);line-height:1.03;letter-spacing:-.045em;margin:0 0 24px}
+    h1 span{color:var(--gold2)}
+    .lead{font-size:clamp(19px,2vw,23px);color:#d6d2c9;max-width:720px;margin:0 0 30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 24px}
+    .btn.secondary{
+      background:transparent;color:var(--text);
+      border:1px solid rgba(214,180,91,.38);box-shadow:none;
+    }
+    .micro{display:flex;flex-wrap:wrap;gap:18px;color:var(--muted);font-size:14px}
+    .micro span:before{content:"✓";color:var(--gold2);font-weight:900;margin-right:7px}
+    .hero-card{
+      padding:24px;border:1px solid rgba(214,180,91,.25);
+      background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+      border-radius:30px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+    }
+    .hero-card:after{
+      content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+      right:-120px;top:-130px;background:rgba(214,180,91,.09);filter:blur(4px);
+    }
+    .calc-preview{position:relative;z-index:2;background:#0e1015;border:1px solid var(--line);border-radius:22px;padding:22px}
+    .calc-preview h3{font-size:18px;margin:0 0 18px}
+    .slider{height:8px;border-radius:99px;background:#282b32;overflow:hidden;margin:15px 0}
+    .slider:before{content:"";display:block;width:72%;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+    .preview-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}
+    .preview-row strong{color:var(--text);font-size:17px}
+    .preview-total{margin-top:18px;border:1px solid rgba(214,180,91,.3);border-radius:17px;padding:18px;background:rgba(214,180,91,.07)}
+    .preview-total small{display:block;color:var(--muted)}
+    .preview-total b{display:block;font-size:31px;color:var(--gold2);margin-top:3px}
+    section{padding:82px 0}
+    .section-head{max-width:770px;margin-bottom:38px}
+    .section-head h2{font-size:clamp(32px,4vw,50px);line-height:1.12;letter-spacing:-.035em;margin:0 0 14px}
+    .section-head p{color:var(--muted);margin:0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+      background:linear-gradient(155deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    }
+    .num{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(214,180,91,.11);color:var(--gold2);font-weight:900;margin-bottom:18px}
+    .card h3{font-size:21px;margin:0 0 9px}
+    .card p{font-size:16px;color:var(--muted);margin:0}
+    .trust{
+      display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;
+      padding:38px;border-radius:30px;border:1px solid rgba(214,180,91,.22);
+      background:linear-gradient(140deg,rgba(214,180,91,.09),rgba(255,255,255,.02));
+    }
+    .portrait{
+      min-height:330px;border-radius:22px;border:1px solid var(--line);
+      display:grid;place-items:center;text-align:center;padding:28px;
+      background:radial-gradient(circle at 50% 20%,rgba(214,180,91,.13),transparent 55%),#101218;
+    }
+    .portrait .initials{
+      width:110px;height:110px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid rgba(214,180,91,.5);font-size:37px;font-weight:900;color:var(--gold2);margin:auto auto 18px;
+    }
+    .trust-copy h2{font-size:clamp(30px,4vw,48px);line-height:1.12;margin:0 0 18px}
+    .trust-copy p{color:#d0ccc2}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+    .fact{border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(0,0,0,.12)}
+    .fact b{display:block;color:var(--gold2);font-size:23px}
+    .fact span{font-size:13px;color:var(--muted)}
+    .cta-band{
+      text-align:center;padding:54px 30px;border-radius:32px;
+      border:1px solid rgba(214,180,91,.3);
+      background:radial-gradient(circle at top,rgba(214,180,91,.16),transparent 55%),var(--bg2);
+      box-shadow:var(--shadow);
+    }
+    .cta-band h2{font-size:clamp(34px,5vw,58px);line-height:1.08;margin:0 0 16px}
+    .cta-band p{max-width:730px;margin:0 auto 28px;color:var(--muted)}
+    .legal{font-size:13px;color:#8f8b83;margin-top:18px}
+    footer{padding:30px 0 45px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:860px){
+      .hero{padding-top:58px}
+      .hero-grid,.trust{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .hero-card{max-width:620px}
+      .facts{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      body{font-size:17px}
+      .wrap{width:min(100% - 24px,1160px)}
+      .nav{min-height:68px}
+      .brand span{font-size:15px}
+      .brand small{display:none}
+      .nav-cta{padding:12px 14px;min-height:46px;font-size:14px}
+      .hero{padding:48px 0 54px}
+      h1{font-size:43px}
+      .hero-actions{display:grid}
+      .btn{width:100%}
+      section{padding:60px 0}
+      .trust{padding:22px}
+      .cta-band{padding:38px 20px}
+    }
+  .mobile-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px;background:rgba(9,10,13,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.mobile-cta .btn{width:100%}
+@media(max-width:560px){.mobile-cta{display:block}footer{padding-bottom:92px}}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        <span>SOMA <small>SMARTCALC</small></span>
+      </a>
+      <a class="nav-cta" href="smartcalc.html">Kalkulálok most →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Lakáscélokhoz tervezve</div>
+          <h1>Lásd tisztán,<br><span>mennyi lehet a megtakarításodból.</span></h1>
+          <p class="lead">A SOMA SmartCalc néhány perc alatt érthető kalkulációt készít. Az eredmény után személyes segítséget kérhetsz, hogy a számokból valóban megvalósítható megoldás legyen.</p>
+          <div class="hero-actions">
+            <a class="btn" href="smartcalc.html">Elindítom a kalkulációt →</a>
+            <a class="btn secondary" href="#hogyan">Hogyan működik?</a>
+          </div>
+          <div class="micro">
+            <span>Díjmentes használat</span>
+            <span>Érthető eredmények</span>
+            <span>Személyes szakértői segítség</span>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="SmartCalc előnézet">
+          <div class="calc-preview">
+            <h3>SOMA SmartCalc – gyors előnézet</h3>
+            <div class="preview-row"><span>Havi megtakarítás</span><strong>50 000 Ft</strong></div>
+            <div class="slider"></div>
+            <div class="preview-row"><span>Futamidő</span><strong>8 év</strong></div>
+            <div class="preview-row"><span>Várható összeg</span><strong>személyre szabva</strong></div>
+            <div class="preview-total">
+              <small>A kalkuláció után</small>
+              <b>egyértelmű következő lépést kapsz</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hogyan">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Egyszerű folyamat</div>
+          <h2>Három egyszerű lépés a számítástól a személyes megoldásig</h2>
+          <p>A SmartCalc nem akar helyetted dönteni. Segít átlátni a számokat, majd lehetőséget ad arra, hogy szakértővel beszéld át a következő lépést.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card">
+            <div class="num">01</div>
+            <h3>Add meg az adatokat</h3>
+            <p>Állítsd be a havi összeget, a futamidőt és a számodra fontos célokat.</p>
+          </article>
+          <article class="card">
+            <div class="num">02</div>
+            <h3>Nézd meg az eredményt</h3>
+            <p>Azonnal láthatod a kalkuláció legfontosabb számait, érthető formában.</p>
+          </article>
+          <article class="card">
+            <div class="num">03</div>
+            <h3>Kérj személyes segítséget</h3>
+            <p>Elküldheted a kalkulációdat, és együtt áttekintjük a valóban elérhető lehetőségeket.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap trust">
+        <div class="portrait">
+          <div>
+            <div class="initials">SJ</div>
+            <strong>Somogyi János</strong>
+            <div style="color:var(--muted);font-size:15px;margin-top:5px">hitel- és ingatlanközvetítő</div>
+          </div>
+        </div>
+
+        <div class="trust-copy">
+          <div class="eyebrow">Nem egy névtelen kalkulátor</div>
+          <h2>A számítás mögött valódi szakmai segítség áll</h2>
+          <p>Több mint 18 éve segítek ügyfeleknek eligazodni a finanszírozási lehetőségek között. A célom nem pusztán egy szám megmutatása, hanem hogy a kalkulációból megfelelő, átlátható és megköthető megoldás szülessen.</p>
+
+          <div class="facts">
+            <div class="fact"><b>18+ év</b><span>szakmai tapasztalat</span></div>
+            <div class="fact"><b>több ezer</b><span>korábbi ügyfél</span></div>
+            <div class="fact"><b>1 kapcsolat</b><span>a számítástól a szerződésig</span></div>
+          </div>
+
+          <p><strong style="color:var(--gold2)">Díjmentes tanácsadás • bankfüggetlen összehasonlítás • teljes ügyintézés</strong></p>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Miért hasznos?</div>
+          <h2>Több, mint egy egyszerű online számológép</h2>
+          <p>A számok mellett egyértelmű következő lépést és személyes segítséget is kapsz.</p>
+        </div>
+        <div class="grid3">
+          <article class="card"><div class="num">📊</div><h3>Gyors összehasonlítás</h3><p>Láthatod, hogyan változik az eredmény a havi összeg vagy a futamidő módosításával.</p></article>
+          <article class="card"><div class="num">🧭</div><h3>Egyértelmű következő lépés</h3><p>Az eredmény után közvetlenül kérhetsz személyes visszahívást.</p></article>
+          <article class="card"><div class="num">🤝</div><h3>Emberi segítség</h3><p>A kalkulációt valódi szakmai egyeztetés követheti, nem egy névtelen automata folyamat.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Gyakori kérdések</div>
+          <h2>Amit érdemes tudni az indulás előtt</h2>
+        </div>
+        <div class="grid3">
+          <article class="card"><h3>Ingyenes a használat?</h3><p>Igen. A kalkuláció és a visszahívási kérés is díjmentes.</p></article>
+          <article class="card"><h3>Kötelez valamire?</h3><p>Nem. Az eredmény tájékoztató jellegű, és nem jelent szerződéskötési kötelezettséget.</p></article>
+          <article class="card"><h3>Mi történik utána?</h3><p>Visszahívási kérés esetén személyesen átbeszéljük a célodat és a következő lépéseket.</p></article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="cta-band">
+          <div class="eyebrow" style="justify-content:center">Kezdd el most</div>
+          <h2>Nézd meg, milyen lehetőségeid vannak!</h2>
+          <p>A kalkuláció pár percet vesz igénybe. Az eredmény után kérheted a személyes visszahívásomat, és együtt továbblépünk a megfelelő szerződés felé.</p>
+          <a class="btn" href="smartcalc.html">Elindítom a SOMA SmartCalc-ot →</a>
+          <div class="legal">A kalkuláció tájékoztató jellegű, nem minősül kötelező érvényű ajánlatnak vagy pénzügyi tanácsadásnak.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© 2026 SOMA SmartCalc</span>
+      <span>Gyors számítás • személyes segítség • teljes ügyintézés</span>
+    </div>
+  </footer>
+<div class="mobile-cta"><a class="btn" href="smartcalc.html">Kalkulálok most →</a></div>
+</body>
+</html>
