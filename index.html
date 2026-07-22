@@ -135,6 +135,11 @@
     .fact{border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(0,0,0,.12)}
     .fact b{display:block;color:var(--gold2);font-size:23px}
     .fact span{font-size:13px;color:var(--muted)}
+    .why-list{display:grid;gap:12px;margin:24px 0 28px;padding:0;list-style:none}
+    .why-list li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(0,0,0,.13);color:#ded9cf}
+    .why-list li:before{content:"✓";flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(214,180,91,.13);color:var(--gold2);font-weight:900}
+    .trust-cta{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-top:8px}
+    .trust-note{font-size:14px;color:var(--muted)}
     .cta-band{
       text-align:center;padding:54px 30px;border-radius:32px;
       border:1px solid rgba(214,180,91,.3);
@@ -257,17 +262,26 @@
         </div>
 
         <div class="trust-copy">
-          <div class="eyebrow">Nem egy névtelen kalkulátor</div>
-          <h2>A számítás mögött valódi szakmai segítség áll</h2>
-          <p>Több mint 18 éve segítek ügyfeleknek eligazodni a finanszírozási lehetőségek között. A célom nem pusztán egy szám megmutatása, hanem hogy a kalkulációból megfelelő, átlátható és megköthető megoldás szülessen.</p>
+          <div class="eyebrow">Miért engem válassz?</div>
+          <h2>Nem maradsz egyedül a számokkal</h2>
+          <p>Több mint 18 éve segítek ügyfeleimnek hitel- és lakáscéljaik megvalósításában. A SmartCalc megmutatja a számokat, én pedig segítek eldönteni, hogy az adott megoldás valóban illik-e a célodhoz és a lehetőségeidhez.</p>
 
           <div class="facts">
             <div class="fact"><b>18+ év</b><span>szakmai tapasztalat</span></div>
-            <div class="fact"><b>több ezer</b><span>korábbi ügyfél</span></div>
-            <div class="fact"><b>1 kapcsolat</b><span>a számítástól a szerződésig</span></div>
+            <div class="fact"><b>több ezer</b><span>segített ügyfél</span></div>
+            <div class="fact"><b>0 Ft</b><span>konzultációs díj</span></div>
           </div>
 
-          <p><strong style="color:var(--gold2)">Díjmentes tanácsadás • bankfüggetlen összehasonlítás • teljes ügyintézés</strong></p>
+          <ul class="why-list">
+            <li>Személyesen átnézem a kalkulációdat és a lakáscélodat.</li>
+            <li>Összehasonlítom a szóba jöhető lehetőségeket, érthetően.</li>
+            <li>Ha megfelelő a megoldás, végigkísérlek a teljes ügyintézésen.</li>
+          </ul>
+
+          <div class="trust-cta">
+            <a class="btn" href="smartcalc.html">Kiszámolom a lehetőségeimet →</a>
+            <span class="trust-note">Díjmentes és nem jár kötelezettséggel.</span>
+          </div>
         </div>
       </div>
     </section>
