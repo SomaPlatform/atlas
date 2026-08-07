@@ -1,14 +1,22 @@
-SOMA SmartCalc v1.0 FINAL
+SOMA SmartCalc v2.0
 
-Fájlok:
-- index.html – bemutatkozó oldal
-- smartcalc.html – kalkulátor és kapcsolatfelvétel
-- somogyi-janos.jpg – bemutatkozó kép
-
-Kapcsolati beállítások:
-- Telefonos visszahívás: adatbekérő űrlap
-- WhatsApp: +36 70 458 5290, előre kitöltött üzenettel
-- E-mail: mobilbankar.sj@gmail.com, előre kitöltött tárggyal és üzenettel
+Módosítások:
+- Prémium Plusz 10x30: 10 éves / 120 hónapos konstrukció
+- havi megtakarítás: 10 000–100 000 Ft
+- 30% Lakástakarék Prémium
+- 500 Ft havi számlavezetési díj
+- mobilon a csúszka alatt azonnal, élőben látható:
+  • várható teljes megtakarítás
+  • saját befizetés
+  • Lakástakarék Prémium
+- az eredménysáv mobilon sticky, így a csúszka mozgatása közben is látható
+- új portrékép
+- meglévő kapcsolatfelvételi / Google Apps Script logika megtartva
 
 Telepítés:
-A csomag tartalmát töltsd fel a GitHub repository gyökérkönyvtárába. GitHub Pages használatakor az index.html lesz a nyitóoldal.
+A ZIP tartalmát töltsd fel az atlas repository gyökerébe.
+Az index.html, smartcalc.html és somogyi-janos.png fájlokat cseréld/felülírd.
+
+Megjegyzés:
+A kalkuláció tájékoztató jellegű. A termékfeltételeket szerződéskötés előtt
+mindig az aktuális hivatalos hirdetmény alapján kell ellenőrizni.
