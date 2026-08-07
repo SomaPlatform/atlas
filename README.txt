@@ -1,20 +1,22 @@
-SOMA SmartCalc v2.1 FIX
+SOMA SmartCalc v3.1
 
-Javítások:
-- kritikus JavaScript hiba javítva: a kalkulátor most a 10x30 táblát használja
-- a csúszka mozgatásakor az összes eredmény azonnal frissül
-- a mobil élő eredménykártya is frissül
-- a részösszegek újra megjelennek
-- SOMA márkanév: fehér, SmartCalc: arany; nincs kék/lila linkállapot
-- közvetlen telefonhívás visszaállítva: +36 70 458 5290
-- mobil alsó sávban külön „Hívás” és „Visszahívást kérek” gomb
-- defenszívebb JS: egy hiányzó opcionális elem nem állítja le az egész kalkulátort
+Fő változás:
+- Nincs becslő képlet a 10x30 kalkulációnál.
+- A kalkulátor a teljes, 10 000–100 000 Ft közötti havi betéti sáv OTP tarifatábláját használja 1 000 Ft-os lépésekben.
+- Ezért a teljes megtakarítás, kamat, prémium, szerződéses összeg, lakáskölcsön, törlesztés és díjak az OTP 2026.08.03-tól érvényes Prémium Plusz 10x30 táblájával egyeznek.
+- Mobil élő eredmény, közvetlen hívás és v2.1 UX javítások megmaradtak.
+
+Ellenőrző példák:
+21 000 Ft/hó -> teljes megtakarítás 3 289 085 Ft
+38 000 Ft/hó -> teljes megtakarítás 5 951 671 Ft
+74 000 Ft/hó -> teljes megtakarítás 11 590 111 Ft
+100 000 Ft/hó -> teljes megtakarítás 15 662 313 Ft
 
 Telepítés:
-Az atlas repository gyökerében cseréld le:
+Az atlas repository gyökerében cseréld:
 - smartcalc.html
 - index.html
 - somogyi-janos.png
-A README opcionális.
+README opcionális.
 
-Feltöltés után: Ctrl+F5 / mobilon teljes frissítés.
+Feltöltés után Ctrl+F5 / mobilon teljes frissítés.
