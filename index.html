@@ -1,53 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-/* SOMA desktop layout fix */
-
-html,
-body,
-#root {
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: none !important;
-}
-
-body {
-  margin: 0 !important;
-  overflow-x: hidden !important;
-}
-
-#root {
-  transform: none !important;
-  zoom: 1 !important;
-}
-
-/* A teljes alkalmazás fő konténere */
-#root > div {
-  width: min(1180px, calc(100vw - 48px)) !important;
-  max-width: 1180px !important;
-  min-width: 0 !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  transform: none !important;
-}
-
-/* Asztali nézet */
-@media (min-width: 900px) {
-  #root > div {
-    width: min(1180px, calc(100vw - 64px)) !important;
-  }
-}
-
-/* Mobil nézet */
-@media (max-width: 899px) {
-  #root > div {
-    width: calc(100vw - 20px) !important;
-    max-width: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-</style><head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>React Artifact</title>
